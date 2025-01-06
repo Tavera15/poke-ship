@@ -17,17 +17,18 @@ function PokemonPage()
       }, [])
 
     return(
-        <div className='d-flex justify-content-center'>
+        <div className='mt-4 d-flex flex-column align-items-center'>
+            <h1 className='text-warning'>Pokemon</h1>
             {
                 !isDeckLoaded
                 ? <h1>Loading...</h1>
-                : <div className="d-flex row col-12 col-sm-8">
+                : <div className="d-flex row col-12 col-md-8">
                     {
                         deck.map((p, i) => {
-                            return <PokeCard pokemon={p} id={p.id} />
+                            return <PokeCard pokemon={p} id={p.id} key={p.id} />
                         })
                     }
-                    </div>
+                  </div>
             }
         </div>
     );
