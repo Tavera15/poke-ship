@@ -1,4 +1,19 @@
 
+.poke-card{
+    border: none;
+    background-color: transparent;
+}
+
 .poke-card:hover{
-    transform: scale(1.04);
+    transform: scale(1.02) translateY(-1rem);
+}
+
+.poke-card-selected{
+    background-color: rgb(11, 216, 138);
+    transform: scale(1.02) translateY(-1rem);
+}
+
+.poke-card-selected:hover{
+    transform: translateY(-1rem);
+    transform: scale(1.02) translateY(-1rem);
 }
