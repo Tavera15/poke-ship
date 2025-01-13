@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import PokeCard from "../../Components/PokeCard";
-import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import CheckoutModal from '../../Forms/CheckoutModal';
 
 function PokemonPage()
 {
@@ -22,23 +22,13 @@ function PokemonPage()
     {
         if(!hand.includes(cardId))
         {
-            addToHand(cardId);
+            setHand((prev) => [...prev, cardId]);
         }
         else
         {
-            removeFromHand(cardId);
+            const res = hand.filter((c) => c !== cardId);
+            setHand(res);
         }
-    }
-
-    function addToHand(cardId)
-    {
-        setHand((prev) => [...prev, cardId]);
-    }
-
-    function removeFromHand(cardId)
-    {
-        const res = hand.filter((c) => c !== cardId);
-        setHand(res);
     }
 
     return(
@@ -55,15 +45,10 @@ function PokemonPage()
                     }
                   </div>
             }
-
             {
                 hand.length < 1 
                 ? ""
-                : <Navbar bg="dark" data-bs-theme="dark" fixed="bottom">
-                    <Container className='d-flex justify-content-center p-2'>
-                        <Button variant='warning' className='btn-lg'>Checkout</Button>
-                    </Container>
-                 </Navbar>
+                : <CheckoutModal />
             }
         </div>
     );
