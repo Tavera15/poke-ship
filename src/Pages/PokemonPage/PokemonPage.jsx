@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 import PokeCard from "../../Components/PokeCard";
 import CheckoutModal from '../../Forms/CheckoutModal';
+import { useSelector } from 'react-redux';
 
 function PokemonPage()
 {
@@ -44,7 +45,7 @@ function PokemonPage()
         <div className='mt-4 d-flex flex-column align-items-center'>
             {
                 !isDeckLoaded
-                ? <h1>Loading...</h1>
+                ? <h1 className='text-warning'>Loading...</h1>
                 : <div className="d-flex row col-12 col-md-8">
                     <h1 className='text-warning'>Pokemon</h1>
                     {
