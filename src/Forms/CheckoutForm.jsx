@@ -41,7 +41,7 @@ function CheckoutForm({handleClose, handleCheckout})
                 </div>
                 <div className="form-group col-md-4 mt-3">
                     <label htmlFor="inputEmail">Email</label>
-                    <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="inputEmail" placeholder="Email" />
+                    <input required disabled value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="form-control" id="inputEmail" placeholder="Email" />
                 </div>
                 <div className="form-group col-md-4 mt-3">
                     <label htmlFor="inputPhone">Telephone</label>

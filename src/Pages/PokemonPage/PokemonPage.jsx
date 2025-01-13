@@ -9,6 +9,7 @@ function PokemonPage()
     const [deck, setDeck] = useState([]);
     const [isDeckLoaded, setCardLoaded] = useState(false);
     const [hand, setHand] = useState([]);
+    const token = useSelector(state => state.token.value);
 
     useEffect(() => {
         if(!isDeckLoaded)
@@ -23,7 +24,7 @@ function PokemonPage()
     {
         data.cart = hand;
 
-        axios.post(import.meta.env.VITE_SERVER_API + "/Order/PlaceOrder", data)
+        axios.post(import.meta.env.VITE_SERVER_API + "/Order/PlaceOrder", data, {headers: {Authorization: token}})
         .catch((err) => console.log(err))
         .finally(() => setHand([]))
     }
