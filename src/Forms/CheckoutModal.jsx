@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Navbar, Modal, Container, Button } from "react-bootstrap";
 import CheckoutForm from "./CheckoutForm";
 
-function CheckoutModal()
+function CheckoutModal({handleCheckout})
 {
     const [showCheckout, setShowCheckout] = useState(false);
 
@@ -22,7 +22,7 @@ function CheckoutModal()
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='bg-dark'>
-                    <CheckoutForm handleClose={() => setShowCheckout(false)}/>
+                    <CheckoutForm handleClose={() => setShowCheckout(false)} handleCheckout={(data) => handleCheckout(data)} />
                 </Modal.Body>
             </Modal>
             <Container className='d-flex justify-content-center p-2'>

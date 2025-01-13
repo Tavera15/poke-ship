@@ -1,19 +1,39 @@
 import React, {useState} from "react";
 import { Form, Button } from "react-bootstrap";
 
-function CheckoutForm({handleClose})
+function CheckoutForm({handleClose, handleCheckout})
 {
-    const [name, setName]                   = useState("");
-    const [email, setEmail]                 = useState("");
-    const [phone, setPhone]                 = useState("");
-    const [addressLine1, setAddress1]       = useState("");
+    const [name, setName]                   = useState("sark");
+    const [email, setEmail]                 = useState("nono@sark.com");
+    const [phone, setPhone]                 = useState("123-456-7890");
+    const [addressLine1, setAddress1]       = useState("123 plaeground stret");
     const [addressLine2, setAddress2]       = useState("");
-    const [city, setCity]                   = useState("");
-    const [state, setState]                 = useState("");
-    const [zipCode, setZipCode]             = useState("");
+    const [city, setCity]                   = useState("ls");
+    const [state, setState]                 = useState("ca");
+    const [zipCode, setZipCode]             = useState("12345");
     
+    function submitOrder(e)
+    {
+        e.preventDefault();
+
+        const data = {
+            "customer_delivery": {
+                name,
+                email,
+                phone,
+                addressLine1,
+                addressLine2,
+                city,
+                state,
+                zipCode
+            }
+        }
+
+        handleCheckout(data)
+    }
+
     return(
-        <Form onSubmit={(e) => SubmitOrder(e)}>
+        <Form onSubmit={(e) => submitOrder(e)}>
             <div className="form-row row">
                 <div className="form-group col-md-4 mt-3">
                     <label htmlFor="inputName">Name</label>
@@ -52,7 +72,7 @@ function CheckoutForm({handleClose})
             </div>
             <div className="mt-4 modal-footer">
                 <Button variant='danger' onClick={() => handleClose()}>Close</Button>
-                <Button type="submit" variant='success'>Place Order</Button>
+                <Button type="submit" variant='success' onClick={() => handleClose()}>Place Order</Button>
             </div>
         </Form>
     );

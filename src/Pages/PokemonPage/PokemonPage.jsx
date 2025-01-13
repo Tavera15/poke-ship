@@ -12,11 +12,20 @@ function PokemonPage()
     useEffect(() => {
         if(!isDeckLoaded)
         {
-          axios.get("http://localhost:4000/api/pokemon")
+          axios.get(import.meta.env.VITE_SERVER_API + "/pokemon")
           .then((res) => setDeck(res.data.data))
           .finally(() => setCardLoaded(true));
         }
-      }, [])
+    }, [])
+
+    function handleCheckout(data)
+    {
+        data.cart = hand;
+
+        axios.post(import.meta.env.VITE_SERVER_API + "/Order/PlaceOrder", data)
+        .catch((err) => console.log(err))
+        .finally(() => setHand([]))
+    }
 
     function handleSelect(cardId)
     {
@@ -40,7 +49,7 @@ function PokemonPage()
                     <h1 className='text-warning'>Pokemon</h1>
                     {
                         deck.map((p) => {
-                            return <PokeCard pokemon={p} id={p.id} key={p.id} handleSelect={(cardId) => handleSelect(cardId)} />
+                            return <PokeCard pokemon={p} key={p.id} isSelected={hand.includes(p.id)} handleSelect={(cardId) => handleSelect(cardId)} />
                         })
                     }
                   </div>
@@ -48,7 +57,7 @@ function PokemonPage()
             {
                 hand.length < 1 
                 ? ""
-                : <CheckoutModal />
+                : <CheckoutModal handleCheckout={(data) => handleCheckout(data)} />
             }
         </div>
     );

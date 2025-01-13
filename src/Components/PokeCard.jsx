@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import "./PokeCard.css";
 
-function PokeCard({pokemon, handleSelect})
+function PokeCard({pokemon, handleSelect, isSelected})
 {
-    const [isSelected, setSelected] = useState(false);
-
     function onCardClick()
     {
-        setSelected(!isSelected);
         handleSelect(pokemon.id);
     }
 
