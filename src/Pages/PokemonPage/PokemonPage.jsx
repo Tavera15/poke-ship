@@ -49,11 +49,13 @@ function PokemonPage()
                 ? <h1 className='text-warning'>Loading...</h1>
                 : <div className="d-flex row col-12 col-md-8">
                     <h1 className='text-warning'>Pokemon</h1>
+                    <div className='d-flex row'>
                     {
                         deck.map((p) => {
                             return <PokeCard pokemon={p} key={p.id} isSelected={hand.includes(p.id)} handleSelect={(cardId) => handleSelect(cardId)} />
                         })
                     }
+                    </div>
                   </div>
             }
             {

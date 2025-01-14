@@ -24,12 +24,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   min-width: 320px;
   min-height: 100vh;
   background-image: url("https://pm1.aminoapps.com/5792/80ebcf9c090623799238ca45341887b82880667b_00.jpg");
   background-position: center;
-  background-size:cover;
+  background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
