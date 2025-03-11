@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import LoginForm from "../../Forms/LoginForm";
-import SignUpForm from "../../Forms/SignupForm";
+import SignUpForm from "../../Forms/SignUpForm";
+
 import "./HomePage.css";
 
 function HomePage()
