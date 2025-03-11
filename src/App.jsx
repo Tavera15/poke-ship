@@ -5,6 +5,7 @@ import HomePage from "./Pages/HomePage/HomePage";
 import './App.css'
 import DeckPage from "./Pages/DeckPage/DeckPage";
 import PokeNav from "./Components/PokeNav";
+import InvoicePage from "./Pages/InvoicePage";
 
 function App() {
 
@@ -26,6 +27,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <DeckPage />
+                </PrivateRoute>
+              } 
+              />
+            
+            <Route exact path="/Order/:id" 
+              element={
+                <PrivateRoute>
+                  <InvoicePage />
                 </PrivateRoute>
               } 
               />

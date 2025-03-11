@@ -28,7 +28,7 @@ function CheckoutForm({handleClose, handleCheckout})
                 zipCode
             }
         }
-
+        
         handleCheckout(data)
     }
 

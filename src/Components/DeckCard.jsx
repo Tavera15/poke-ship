@@ -9,10 +9,13 @@ function DeckCard({id})
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        axios.get(`https://api.pokemontcg.io/v2/cards/${id}`)
-        .then((res) => setPokemon(res.data.data))
-        .finally(() => setIsLoaded(true));
-    }, [])
+        if(!isLoaded)
+        {
+            axios.get(`https://api.pokemontcg.io/v2/cards/${id}`)
+            .then((res) => setPokemon(res.data.data))
+            .finally(() => setIsLoaded(true));
+        }
+    }, [isLoaded])
 
     return(
         <div className="col-6 p-2 col-sm-3" role="button">

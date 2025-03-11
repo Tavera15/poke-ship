@@ -3,6 +3,7 @@ import axios from 'axios';
 import PokeCard from "../../Components/PokeCard";
 import CheckoutModal from '../../Forms/CheckoutModal';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function PokemonPage()
 {
@@ -10,6 +11,7 @@ function PokemonPage()
     const [isDeckLoaded, setCardLoaded] = useState(false);
     const [hand, setHand] = useState([]);
     const token = useSelector(state => state.token.value);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(!isDeckLoaded)
@@ -23,8 +25,9 @@ function PokemonPage()
     function handleCheckout(data)
     {
         data.cart = hand;
-
+        
         axios.post(import.meta.env.VITE_SERVER_API + "/Order/PlaceOrder", data, {headers: {Authorization: token}})
+        .then((res) => navigate("/Order/" + res.data._id))
         .catch((err) => console.log(err))
         .finally(() => setHand([]))
     }
@@ -47,8 +50,9 @@ function PokemonPage()
             {
                 !isDeckLoaded
                 ? <h1 className='text-warning'>Loading...</h1>
-                : <div className="d-flex row col-12 col-md-8">
-                    <h1 className='text-warning'>Pokemon</h1>
+                : <div className="d-flex row col-12 col-md-8 justify-content-center">
+                    <img className="col-12 col-md-6 mt-2 mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pokémon_logo.svg/2560px-International_Pokémon_logo.svg.png" alt="pokemon-logo"/>
+                    <hr />
                     <div className='d-flex row'>
                     {
                         deck.map((p) => {

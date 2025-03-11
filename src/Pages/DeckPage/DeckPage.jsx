@@ -24,7 +24,6 @@ function DeckPage()
                 !isLoaded
                 ? <h1 className='text-warning'>Loading...</h1>
                 : <div className="d-flex row col-12 col-md-8">
-                    <h1 className='text-warning'>Pokemon Deck</h1>
                     <div className="d-flex row">
                     {
                         deck.map((p, i) => {
